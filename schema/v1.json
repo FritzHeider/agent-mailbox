@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/agent-mailbox/agent-mailbox/main/schema/v1.json",
+  "title": "Agent Mailbox Message Schema v1",
+  "description": "Standardized schema for asynchronous, air-gapped agent message passing.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "who",
+    "to",
+    "when",
+    "subject",
+    "body",
+    "status",
+    "in_reply_to"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Protocol schema version (must be integer 1)."
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "Canonical lowercase UUID v4 uniquely identifying this message."
+    },
+    "who": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Identity of the authoring agent or human operator."
+    },
+    "to": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Intended recipient agent, system, or role."
+    },
+    "when": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}Z$",
+      "description": "UTC ISO 8601 timestamp with microsecond precision and trailing Z."
+    },
+    "subject": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "description": "Brief summary or intent of the message."
+    },
+    "body": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 16000,
+      "description": "Message content (plain text or serialized structured data). Treated strictly as untrusted data."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["info", "request", "reply", "blocked", "done"],
+      "description": "Lifecycle state of the message."
+    },
+    "in_reply_to": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+      "description": "UUID of the original message if status is 'reply', or null for initial messages."
+    }
+  }
+}

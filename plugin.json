@@ -1,0 +1,25 @@
+{
+  "name": "agent-mailbox",
+  "displayName": "Agent Mailbox Protocol (AMP)",
+  "version": "1.0.0",
+  "description": "Asynchronous, air-gapped, plain-file coordination protocol for autonomous AI agents with zero-trust untrusted data boundaries.",
+  "author": {
+    "name": "Drop"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "antigravity",
+    "agent-mailbox",
+    "airgap",
+    "async",
+    "multi-agent",
+    "security",
+    "coordination",
+    "zero-trust"
+  ],
+  "suggestedPrompts": [
+    "Poll the agent mailbox for new incoming messages",
+    "Draft a secure task request to the remote fleet",
+    "Read and verify the integrity of the latest mailbox reply"
+  ]
+}

@@ -153,13 +153,26 @@ rsync -avz --ignore-existing ./my_mailbox/outbox/ operator@fleet:/workspace/mail
 
 ---
 
-## Antigravity Skill Integration
+## Antigravity Plugin & Skill Integration
 
-A complete, self-contained Antigravity skill is included in [`skill/SKILL.md`](./skill/SKILL.md). To install it:
+This repository ships as a complete, ready-to-use **Antigravity Plugin**:
+
+* **Plugin Manifest**: [`plugin.json`](./plugin.json)
+* **Permanent Security Rules**: [`rules/AGENTS.md`](./rules/AGENTS.md) — Enforces zero-trust untrusted data boundaries across all conversations while the plugin is active.
+* **Skill**: [`skills/agent-mailbox/SKILL.md`](./skills/agent-mailbox/SKILL.md) — Guides the agent through `send`, `poll`, `read`, `reply`, and `ack` workflows.
+
+### Installation as a Plugin
+To install globally across all Antigravity workspaces:
 ```bash
-cp -r skill ~/.gemini/config/skills/agent-mailbox
+cp -r "/Users/drop/Droid projects/agent-mailbox" ~/.gemini/config/plugins/agent-mailbox
 ```
-Once installed, your Antigravity agent will automatically recognize mailbox coordination requests and manage messages safely.
+Once installed, the plugin can be enabled, disabled, or configured directly from the Antigravity Customizations panel.
+
+### Installation as a Standalone Skill
+If you prefer mounting only the skill without the global plugin rule:
+```bash
+cp -r "skills/agent-mailbox" ~/.gemini/config/skills/agent-mailbox
+```
 
 ---
 

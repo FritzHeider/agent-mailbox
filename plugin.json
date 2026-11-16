@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Asynchronous, air-gapped, plain-file coordination protocol for autonomous AI agents with zero-trust untrusted data boundaries.",
   "author": {
-    "name": "Drop"
+    "name": "Fritz"
   },
   "license": "Apache-2.0",
   "keywords": [
